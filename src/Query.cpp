@@ -78,9 +78,11 @@ void Query::execute_range() const {
     BLOCK_ACCESSES = 0;
     bptree.range(fout, this->min_range_key, this->max_range_key);
     cout << BLOCK_ACCESSES << " ";
+
     BLOCK_ACCESSES = 0;
     heap.range(fout, this->min_range_key, this->max_range_key);
     cout << BLOCK_ACCESSES << endl;
+    
     BLOCK_ACCESSES = 0;
     fout.close();
 }
