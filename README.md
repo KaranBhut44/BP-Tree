@@ -1,1 +1,3 @@
-# BP-Tree
+# BPTree
+
+![](./docs/chart.gif)
