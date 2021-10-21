@@ -11,10 +11,13 @@
  * and FANOUT children.
  */
 
+
 #ifndef BPTREE_INTERNALNODE_HPP
 #define BPTREE_INTERNALNODE_HPP
 
 #include "TreeNode.hpp"
+#include "LeafNode.hpp"
+#include "RecordPtr.hpp"
 
 class InternalNode : public TreeNode {
 public:
