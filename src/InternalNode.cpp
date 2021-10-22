@@ -50,11 +50,12 @@ TreePtr InternalNode::insert_key(const Key &key, const RecordPtr &record_ptr) {
         this->size++;
     }    
 
-    if(this->overflows()){
+    if(this->overflows()){  
 
         InternalNode * R = new InternalNode(NULL_PTR);
         
         int lCount = (int)ceil( (float)FANOUT / 2.0 );
+        // cout<<endl<<"---------- "<<lCount<<endl;
 
         for(int count=lCount; count<this->keys.size(); count++){
             R->keys.push_back(this->keys[count]);
@@ -65,16 +66,13 @@ TreePtr InternalNode::insert_key(const Key &key, const RecordPtr &record_ptr) {
             R->size++;
         }
 
-        for(int count=lCount; count<this->keys.size(); count++){
+        int helperTemp = this->tree_pointers.size();
+        for(int count=lCount; count<helperTemp; count++){
             this->keys.pop_back();
-        }
-
-        for(int count=lCount; count<this->tree_pointers.size(); count++){
+        
             this->tree_pointers.pop_back();
             this->size--;
         }
-
-        this->size--;
 
         new_tree_ptr = R->tree_ptr;
         R->dump();
@@ -119,20 +117,20 @@ void InternalNode::delete_key(const Key &key) {
 
             // cout<<"\n\n\n *********** THIS \n"<<this<<endl;
 
-            if(L){
-                L->dump();
-                // cout<<"\n\n\n *********** L \n"<<L<<endl;    
-            }
+            // if(L){
+            //     L->dump();
+            //     cout<<"\n\n\n *********** L \n"<<L<<endl;    
+            // }
 
-            if(curr){
-                curr->dump();
-                // cout<<"\n\n\n *********** Curr \n"<<curr<<endl;    
-            }
+            // if(curr){
+            //     curr->dump();
+            //     cout<<"\n\n\n *********** Curr \n"<<curr<<endl;    
+            // }
 
-            if(R){
-                R->dump();
-                // cout<<"\n\n\n *********** R \n"<<R<<endl;    
-            }
+            // if(R){
+            //     R->dump();
+            //     cout<<"\n\n\n *********** R \n"<<R<<endl;    
+            // }
 
             if(L != NULL){
                 
@@ -237,20 +235,20 @@ void InternalNode::delete_key(const Key &key) {
 
             // cout<<"\n\n\n *********** THIS \n"<<this<<endl;
 
-            if(L){
-                L->dump();
-                // cout<<"\n\n\n *********** L \n"<<L<<endl;    
-            }
+            // if(L){
+            //     L->dump();
+            //     cout<<"\n\n\n *********** L \n"<<L<<endl;    
+            // }
 
-            if(curr){
-                curr->dump();
-                // cout<<"\n\n\n *********** Curr \n"<<curr<<endl;    
-            }
+            // if(curr){
+            //     curr->dump();
+            //     cout<<"\n\n\n *********** Curr \n"<<curr<<endl;    
+            // }
 
-            if(R){
-                R->dump();
-                // cout<<"\n\n\n *********** R \n"<<R<<endl;    
-            }
+            // if(R){
+            //     R->dump();
+            //     cout<<"\n\n\n *********** R \n"<<R<<endl;    
+            // }
 
             if(L != NULL){
                 
